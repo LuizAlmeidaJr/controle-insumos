@@ -16,103 +16,116 @@
             <h2>Insumos</h2>
             <h3>Tratamento de Caldo</h3>
             <div class="setor">
-                <div class="item">
-                <p>Cal Virgem Clarisina</p>
-                <p>Polímero Catiônico</p>
-                <p>Polímero Aniônico</p>
+                <div class="item2">
+                    <h4>Cal Virgem Clarisina</h4>
+                    <p>Silo = <input type="number" name="calSilo" id="calSilo"> cm</p>
+                    <p>Bags = <input type="number" name="calBag" id="calBag"></p>
                 </div>
-                <div id="medidasTC">
-                    <div id="cal">
-                        <p>Silo = <input type="number" name="calSilo" id="calSilo"> cm</p>
-                        <p>Bags = <input type="number" name="bagSilo" id="bagSilo"></p>
-                    </div>
+                <div class="item1 linha">
+                    <h4>Polímero Catiônico</h4>
                     <p>Sacos = <input type="number" name="polCat" id="polCat"></p>
+                </div>
+                <div class="item1">
+                    <h4>Polímero Aniônico</h4>
                     <p>Sacos = <input type="number" name="polAni" id="polAni"></p>
                 </div>
             </div>
             <h3>Evaporação</h3>
             <div class="setor">
-                <div class="item">
-                    <p>Soda Cáustica 50%</p>
-                </div>
-                <div id="medidasEvap">
+                <div class="item1">
+                    <h4>Soda Cáustica 50%</h4>
                     <p>Tanque = <input type="number" name="soda" id="soda"> cm</p>
                 </div>
             </div>
             <h3>Fermentação</h3>
             <div class="setor">
-                <div class="item">
-                    <p>Ácido Sulfúrico Concentrado</p>
-                    <p>Ácido Sulfúrico Diluído</p>
-                    <ul>
-                        <li>Tanque 01</li>
-                        <li>Tanque 02</li>
-                        <li>Tanque 03</li>
-                        <li>Tanque 04</li>
-                        <li>Tanque 05</li>
-                        <li>Tanque 06</li>
-                    </ul>
-                    <p>Antiespumante</p>
-                    <ul>
-                        <li>Tanque Cinza</li>
-                        <li>Container</li>
-                        <li>Tanque Pulmão Dornas</li>
-                    </ul>
-                    <p>Dispersante</p>
-                    <ul>
-                        <li>Tanque Cinza</li>
-                        <li>Container</li>
-                    </ul>
-                    <p>Nutriente</p>
-                    <p>Dióxido de Cloro 25%</p>
-                    <p>Antibiótico</p>
-                    <p>Monensina Emulsão</p>
-                    <p>Bactericida</p>
+                <div class="item1">
+                    <h4>Ácido Sulfúrico Concentrado</h4>
+                    <p>Tanque = <input type="number" name="acidoCon" id="acidoCon"> cm</p>
                 </div>
-                <div id="medidasFerm">
-                    <p>Tanque = <input type="number" name="acidCon" id="acidCon"> cm</p>
-                    <div id="acidDil">
-                        <p>Tanque 01 = <input type="number" name="acidDil1" id="acidDil1"> %</p>
-                        <p>Tanque 02 = <input type="number" name="acidDil2" id="acidDil2"> %</p>
-                        <p>Tanque 03 = <input type="number" name="acidDil3" id="acidDil3"> %</p>
-                        <p>Tanque 04 = <input type="number" name="acidDil4" id="acidDil4"> %</p>
-                        <p>Tanque 05 = <input type="number" name="acidDil5" id="acidDil5"> %</p>
-                        <p>Tanque 06 = <input type="number" name="acidDil6" id="acidDil6"> %</p>
+                <div class="item1 linha">
+                    <h4>Ácido Sulfúrico Diluído</h4>
+                    <div id="acidoDil">
+                        <p>Tanque 01 = <input type="number" name="acidoDil1" id="acidoDil1"> %</p>
+                        <p>Tanque 02 = <input type="number" name="acidoDil2" id="acidoDil2"> %</p>
+                        <p>Tanque 03 = <input type="number" name="acidoDil3" id="acidoDil3"> %</p>
+                        <p>Tanque 04 = <input type="number" name="acidoDil4" id="acidoDil4"> %</p>
+                        <p>Tanque 05 = <input type="number" name="acidoDil5" id="acidoDil5"> %</p>
+                        <p>Tanque 06 = <input type="number" name="acidoDil6" id="acidoDil6"> %</p>
                     </div>
-                    <div id="AE">
-                        <p>Tanque Cinza = <input type="number" name="AETq" id="AETq"> cm</p>
-                        <p>Container = <input type="number" name="AECtn" id="AECtn"> L</p>
-                        <p>Tanque Pulmão Dornas = <input type="number" name="AEDorna" id="AEDorna"> L</p>
-                    </div>
-                    <div id="DP">
-                        <p>Tanque Cinza = <input type="number" name="DPTq" id="DPTq"> cm</p>
-                        <p>Container = <input type="number" name="DPCtn" id="DPCtn"> L</p>
-                    </div>
-                    <p>Container = <input type="number" name="diox" id="diox"> L</p>
-                    <div id="antib">
-                        <p>Kamoran WP = <input type="number" name="antib1" id="antib1"></p>
-                        <p>Protemosto PRO = <input type="number" name="antib2" id="antib2"></p>
-                        <p>Protemosto HOP = <input type="number" name="antib3" id="antib3"></p>
-                    </div>
-            </div>    
+                </div>
+                <div class="item3">
+                    <h4>Antiespumante</h4>
+                    <p>Tanque Cinza = <input type="number" name="AETanque" id="AETanque"> cm</p>
+                    <p>Container = <input type="number" name="AEContainer" id="AEContainer"> L</p>
+                    <p>Tanque Pulmão Dornas = <input type="number" name="AEDorna" id="AEDorna"> L</p>
+                </div>
+                <div class="item2 linha">
+                    <h4>Dispersante</h4>
+                    <p>Tanque Cinza = <input type="number" name="DPTanque" id="DPTanque"> cm</p>
+                    <p>Container = <input type="number" name="DPContainer" id="DPContainer"> L</p>
+                </div>
+                <div class="item1">
+                    <h4>Nutriente</h4>
+                    <p>Container = <input type="number" name="nutri" id="nutri"> L</p>
+                </div>
+                <div class="item1 linha">
+                    <h4>Dióxido de Cloro 25%</h4>
+                    <p>Container = <input type="number" name="dioxido" id="dioxido"> L</p>
+                </div>
+                <div class="item3">
+                    <h4>Antibiótico</h4>
+                    <p>Kamoran WP = <input type="number" name="antib1" id="antib1"> kg</p>
+                    <p>Protemosto PRO = <input type="number" name="antib2" id="antib2"> kg</p>
+                    <p>Protemosto HOP = <input type="number" name="antib3" id="antib3"> kg</p>
+                </div>
+                <div class="item1 linha">
+                    <h4>Monensina Emulsão</h4>
+                    <p>Container = <input type="number" name="monensina" id="monensina"> L</p>
+                </div>
+                <div class="item1">
+                    <h4>Bactericida</h4>
+                    <p>Container = <input type="number" name="bact" id="bact"> L</p>
+                </div>
+            </div>
             <h3>Destilação</h3>
             <div class="setor">
-                <p>Neutralizante de Etanol</p>
-            </div> 
-            <h3>Torre de Resfriamento</h3>   
-            <div class="setor">
-                <p>Hipoclorito de Sódio 12,5%</p>
-                <p>Hipoclorito de Cálcio</p>
-                <p>Zalta</p>
-                <p>Tallofin</p>
-                <p>Quatermol</p>
-                <p>Antiespumante para Água</p>
+                <div class="item1">
+                    <h4>Neutralizante</h4>
+                    <p>Galão = <input type="number" name="neutra" id="neutra"> uni</p>
+                </div>
             </div>
-
-
-            
+            <h3>Torre de Resfriamento</h3>
+            <div class="setor">
+                <div class="item1">
+                    <h4>Hipoclorito de Sódio 12,5%</h4>
+                    <p>Container = <input type="number" name="hipoNa" id="hipoNa"> L</p>
+                </div>
+                <div class="item1 linha">
+                    <h4>Hipoclorito de Cálcio</h4>
+                    <p>Balde = <input type="number" name="hipoCa" id="hipoCa"> uni</p>
+                </div>
+                <div class="item1">
+                    <h4>Zalta</h4>
+                    <p>Galão = <input type="number" name="zalta" id="zalta"> uni</p>
+                </div>
+                <div class="item1 linha">
+                    <h4>Tallofin</h4>
+                    <p>Galão = <input type="number" name="tallofin" id="tallofin"> uni</p>
+                </div>
+                <div class="item1">
+                    <h4>Quatermol</h4>
+                    <p>Bombona = <input type="number" name="quaternario" id="quaternario"> uni</p>
+                </div>
+                <div class="item1 linha">
+                    <h4>Antiespumante para Água</h4>
+                    <p>Container = <input type="number" name="AEAgua" id="AEAgua"> L</p>
+                </div>
+            </div>
         </div>
-        <div id="estoque"></div>
+        <div id="estoque">
+            <button type="submit">Calcular estoque</button>
+        </div>
     </main>
 </body>
 </html>
