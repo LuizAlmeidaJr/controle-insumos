@@ -8,11 +8,11 @@
 :root {
     --color0: white;
     --color1: black;
-    --color2: green;
-    --color3: blue;
-    --color4: red;
-    --color5: purple;
-    --color6: orange;
+    --color2: #31526e;
+    --color3: #60BF81;
+    --color4: #582579;
+    --color5: #60BF81;
+    --color6: #60bfb2;
 }
 
 body {
@@ -31,7 +31,7 @@ h1 {
 }
 
 h2 {
-    color: var(--color4);
+    color: var(--color2);
     padding: 1em 0 0 2em;;
 }
 
@@ -101,6 +101,16 @@ button {
     display: block;
     margin: 0 auto 2em auto;
     cursor: pointer;
+}
+
+#estoqueCalculado {
+    margin: 2em;
+    border: 1px solid var(--color5);
+    border-radius: 5px;
+    line-height: 1.5em;
+    padding: 1em;
+    font-style: italic;
+    font-weight: bold;
 }
 
 
