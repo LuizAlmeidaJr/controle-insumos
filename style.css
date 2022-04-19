@@ -7,12 +7,10 @@
 
 :root {
     --color0: white;
-    --color1: black;
-    --color2: #31526e;
-    --color3: #60BF81;
-    --color4: #582579;
-    --color5: #60BF81;
-    --color6: #60bfb2;
+    --color1: #535353;
+    --color2: #0D274D;
+    --color3: #F3A600;
+    --color4: #21bee944;
 }
 
 body {
@@ -31,7 +29,8 @@ h1 {
 }
 
 h2 {
-    color: var(--color2);
+    color: var(--color3);
+    text-shadow: 1px 1px var(--color1);
     padding: 1em 0 0 2em;;
 }
 
@@ -43,10 +42,12 @@ h3 {
 }
 
 h4 {
+    color: var(--color1);
     padding: 0.2em;
 }
 
 p {
+    color: var(--color1);
     line-height: 2em;
     margin-left: 0.5em;
     font-weight: bold;
@@ -89,14 +90,14 @@ input {
 }
 
 .linha {
-    background-color: var(--color6);
+    background-color: var(--color4);
 }
 
 button {
     font-size: 1em;
     padding: 0.5em;
     color: var(--color0);
-    background-color: var(--color5);
+    background-color: var(--color2);
     border-radius: 5px;
     display: block;
     margin: 0 auto 2em auto;
@@ -104,8 +105,9 @@ button {
 }
 
 #estoqueCalculado {
+    color: var(--color1);
     margin: 2em;
-    border: 1px solid var(--color5);
+    border: 1px solid var(--color3);
     border-radius: 5px;
     line-height: 1.5em;
     padding: 1em;
