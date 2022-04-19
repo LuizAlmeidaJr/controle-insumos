@@ -13,7 +13,7 @@
     </header>
     <main>
         <div id="medidas">
-            <h2>Insumos</h2>
+            <h2>Insumos Industriais</h2>
             <h3>Tratamento de Caldo</h3>
             <div class="setor">
                 <div class="item2">
@@ -58,7 +58,7 @@
                     <h4>Antiespumante</h4>
                     <p>Tanque Cinza = <input type="number" name="AETanque" id="AETanque"> cm</p>
                     <p>Container = <input type="number" name="AEContainer" id="AEContainer"> L</p>
-                    <p>Tanque Pulmão Dornas = <input type="number" name="AEDorna" id="AEDorna"> L</p>
+                    <p>Pulmão Dornas = <input type="number" name="AEDorna" id="AEDorna"> L</p>
                 </div>
                 <div class="item2 linha">
                     <h4>Dispersante</h4>
@@ -124,8 +124,10 @@
             </div>
         </div>
         <div id="estoque">
-            <button type="submit">Calcular estoque</button>
+            <button type="submit" id="calculaEstoque" onclick()>Calcular estoque</button>
+            <div id="estoqueCalculado"></div>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
