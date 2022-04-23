@@ -61,13 +61,20 @@ function calcularEstoque() {
         return massa.toFixed(0);
     }
 
+    function calculaMassaCal(alturaVazio) {  // Utiliza um polinômio do 6º grau para calcular a massa de cal dentro do silo com base na medida da altura vazia dentro do silo
+        // Usar a alturaVazio em (cm) para obter a massa de cal em (kg)
+        var massaCal = (-2E-12) * Math.pow(alturaVazio, 6) + 4E-9 * Math.pow(alturaVazio, 5) - 3E-6 * Math.pow(alturaVazio, 4) + 8E-4 * Math.pow(alturaVazio, 3) + 8.12E-2 * Math.pow(alturaVazio, 2) - 90.562 * alturaVazio + 55228;
+        return massaCal;
+    }
+
     // Cálculo dos Estoques (variáveis começam com "e")
+    var eCal = calculaMassaCal(mCalSilo);
     var ePolCat = mPolCat * bPolCat;
     var ePolAni = mPolAni * bPolAni;
     var eSoda = calculaMassa(1.48, 5, mSoda, bSoda);
     var eAcidoCon = calculaMassa(1.48, 5, mAcidoCon, bAcidoCon);
     var eAcidoDil = (mAcidoDil1 / 100 + mAcidoDil2 / 100 + mAcidoDil3 / 100 + mAcidoDil4 / 100 + mAcidoDil5 / 100 + mAcidoDil6 / 100) * 10000 * bAcidoDil;
-    var eAE = parseInt(calculaMassa(0.5, 2, mAETanque, bAE)) + (mAEContainer + mAEDorna) * bAE;
+    var eAE = parseInt(calculaMassa(0.5, 2, mAETanque, bAE)) + (parseInt(mAEContainer) + parseInt(mAEDorna)) * bAE;
     var eDP = parseInt(calculaMassa(0.5, 2, mDPTanque, bDP)) + mDPContainer * bDP;
     var eNutri = mNutri * bNutri;
     var eDioxido = mDioxido * bDioxido;
@@ -83,8 +90,10 @@ function calcularEstoque() {
 
     var today = new Date();
     var resultado = document.getElementById("estoqueCalculado");
-    resultado.innerHTML = `Estoque ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}:`;
+    resultado.innerHTML = `Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}:`;
     resultado.innerHTML += "<br><br>";
+    resultado.innerHTML += `Cal Clarisina: ${mCalSilo} cm, ${mCalBag} bags = kg`; //${eCal}
+    resultado.innerHTML += "<br>";
     resultado.innerHTML += `Polímero Catiônico: ${mPolCat} sacos = ${ePolCat}kg`;
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Polímero Aniônico: ${mPolAni} sacos = ${ePolAni}kg`;
