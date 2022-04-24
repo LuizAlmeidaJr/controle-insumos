@@ -46,8 +46,8 @@ function calcularEstoque() {
     var bNutri = 1.15;  // densidade do nutriente
     var bDioxido = 1.3;  // verificar
     var bZalta = 20;
-    var bMonensina = 1.1;  // verificar
-    var bBact = 200;
+    var bMonensina = 1;  // densidade da monensina emulsão
+    var bBact = 1;
     var bNeutra = 55;
     var bHipoNa = 1.2;  // densidade do hipoclorito de sódio 12,5%
     var bHipoCa = 14;
@@ -55,20 +55,67 @@ function calcularEstoque() {
     var bQuaternario = 200;
     var bAEAgua = 0.9;
 
-    function calculaMassa(raio, comprimento, altura, densidade) { // Calcula a massa de um fluido dentro de um tanque cilíndrico horizontal
-        // Usar raio do tanque em (m), comprimento do tanque em (m), altura de fluido dentro do tanque em (cm) e densidade do fluido em (kg/L) para obter a massa em (kg)
-        var massa = ((altura / 100 - raio) * Math.sqrt(Math.pow(raio, 2) - Math.pow((altura / 100 - raio), 2))  + Math.pow(raio, 2) * (Math.asin((altura / 100 - raio) / raio) + Math.PI / 2)) * comprimento * 1000 * densidade;
-        return massa.toFixed(0);
-    }
-
-    function calculaMassaCal(alturaVazio) {  // Utiliza um polinômio do 6º grau para calcular a massa de cal dentro do silo com base na medida da altura vazia dentro do silo
+    function calculaMassaCal(alturaVazio) {  // Utiliza uma relação de valores para determinar a massa de cal contida num silo
         // Usar a alturaVazio em (cm) para obter a massa de cal em (kg)
-        var massaCal = (-2E-12) * Math.pow(alturaVazio, 6) + 4E-9 * Math.pow(alturaVazio, 5) - 3E-6 * Math.pow(alturaVazio, 4) + 8E-4 * Math.pow(alturaVazio, 3) + 8.12E-2 * Math.pow(alturaVazio, 2) - 90.562 * alturaVazio + 55228;
+        //var massaCal = (-2E-12) * Math.pow(alturaVazio, 6) + 4E-9 * Math.pow(alturaVazio, 5) - 3E-6 * Math.pow(alturaVazio, 4) + 8E-4 * Math.pow(alturaVazio, 3) + 8.12E-2 * Math.pow(alturaVazio, 2) - 90.562 * alturaVazio + 55228;
+        var medidaSilo = [];
+        for(i = 485; i < 800; i += 5) {
+            medidaSilo.push(i);
+        }
+
+        var calSilo = [9918, 9327, 8928, 8540, 8163, 7797, 7443, 7099, 6767, 6444, 6132, 5831, 5539, 5257, 4985, 4722, 4469, 4225, 3990, 3763, 3546, 3337, 3136, 2944, 2759, 2582, 2413, 2252, 2097, 1950, 1810, 1677, 1550, 1430, 1316, 1208, 1106, 1010, 920, 835, 756, 681, 612, 547, 487, 431, 380, 332, 289, 249, 213, 181, 151, 125, 102, 81, 63, 48, 34, 23, 14, 6, 0];
+
+        if(alturaVazio <= 480) {
+            massaCal = 55203 - 92.418 * alturaVazio;  // Para a parte cilíndrica do silo, a relação é linear
+        } else {  // Para medidas acima de 480cm, entra na parte cônica (onde a relação deixa de ser linear e é necessário utilizar um relação de valores conhecidos)
+            for(i = 0; i < medidaSilo.length; i++) {
+                if(alturaVazio == medidaSilo[i]) {
+                    massaCal = calSilo[i];
+                }
+            }
+        }
         return massaCal;
     }
 
+    function calculaMassa(raio, comprimento, altura, densidade) { // Calcula a massa de um fluido dentro de um tanque cilíndrico horizontal
+        // Usar raio do tanque em (m), comprimento do tanque em (m), altura de fluido dentro do tanque em (cm) e densidade do fluido em (kg/L) para obter a massa em (kg)
+        var massa = ((altura / 100 - raio) * Math.sqrt(Math.pow(raio, 2) - Math.pow((altura / 100 - raio), 2))  + Math.pow(raio, 2) * (Math.asin((altura / 100 - raio) / raio) + Math.PI / 2)) * comprimento * 1000 * densidade;
+        return massa;
+    }
+
+    // Validação das medidas máximas para tanques e silo:
+    if(mCalSilo > 795) {
+        alert("Medida inválida para o tanque de cal! [MAX 795cm]");
+        mCalSilo = NaN;
+    }
+
+    if(mSoda > 296) {
+        alert("Medida inválida para o tanque de soda! [MAX 296cm]");
+        mSoda = NaN
+    }
+
+    if(mAcidoCon > 296) {
+        alert("Medida inválida para o tanque de ácido concentrado! [MAX 296cm]");
+        mAcidoCon = NaN;
+    }
+
+    if(mAcidoDil1 > 100 || mAcidoDil2 > 100 || mAcidoDil3 > 100 || mAcidoDil4 > 100 || mAcidoDil5 > 100 || mAcidoDil6 > 100) {
+        alert("Medida inválida para o tanque de ácido diluído! [MAX 100%]");
+        mAcidoDil1 = NaN;
+    }
+
+    if(mAETanque > 100) {
+        alert("Medida inválida para o tanque de antiespumante! [MAX 100cm]");
+        mAETanque = NaN;
+    }
+
+    if(mDPTanque > 100) {
+        alert("Medida inválida para o tanque de dispersante! [MAX 100cm]");
+        mDPTanque = NaN;
+    }
+
     // Cálculo dos Estoques (variáveis começam com "e")
-    var eCal = calculaMassaCal(mCalSilo);
+    var eCal = calculaMassaCal(mCalSilo) + mCalBag * bBagCal;
     var ePolCat = mPolCat * bPolCat;
     var ePolAni = mPolAni * bPolAni;
     var eSoda = calculaMassa(1.48, 5, mSoda, bSoda);
@@ -92,17 +139,17 @@ function calcularEstoque() {
     var resultado = document.getElementById("estoqueCalculado");
     resultado.innerHTML = `Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}:`;
     resultado.innerHTML += "<br><br>";
-    resultado.innerHTML += `Cal Clarisina: ${mCalSilo} cm, ${mCalBag} bags = kg`; //${eCal}
+    resultado.innerHTML += `Cal Clarisina: ${mCalSilo} cm, ${mCalBag} bags = ${eCal.toFixed(0)} kg`;
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Polímero Catiônico: ${mPolCat} sacos = ${ePolCat}kg`;
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Polímero Aniônico: ${mPolAni} sacos = ${ePolAni}kg`;
     resultado.innerHTML += "<br>";
-    resultado.innerHTML += `Soda Cáustica 50%: ${mSoda} cm = ${eSoda}kg`;
+    resultado.innerHTML += `Soda Cáustica 50%: ${mSoda} cm = ${eSoda.toFixed(0)}kg`;
     resultado.innerHTML += "<br>";
-    resultado.innerHTML += `Ácido Sulfúrico Concentrado: ${mAcidoCon} cm = ${eAcidoCon}kg`;
+    resultado.innerHTML += `Ácido Sulfúrico Concentrado: ${mAcidoCon} cm = ${eAcidoCon.toFixed(0)}kg`;
     resultado.innerHTML += "<br>";
-    resultado.innerHTML += `Ácido Sulfúrico Diluído: ${eAcidoDil}kg`;
+    resultado.innerHTML += `Ácido Sulfúrico Diluído: ${eAcidoDil.toFixed(0)}kg`;
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Antiespumante: ${mAETanque} cm, ${mAEContainer} L, ${mAEDorna} L = ${eAE.toFixed(0)}kg`;
     resultado.innerHTML += "<br>";
