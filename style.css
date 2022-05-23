@@ -120,12 +120,11 @@ button {
 h5 {
     font-size: 1.5em;
     color: var(--color3);
-    text-decoration: underline;
     text-shadow: 1px 1px var(--color1);
-    padding: 1em 0 0 0.5em;
+    padding-top: 1em;
 }
 
-table {
+/*table {
     border: 1px solid var(--color1);
     width: 100%;
 }
@@ -143,5 +142,5 @@ td {
     text-align: center;
     padding: 1em 0;
     width: 33%;
-}
+}*/
 
