@@ -11,6 +11,7 @@
     --color2: #0D274D;
     --color3: #F3A600;
     --color4: #21bee944;
+    --color5: #dadada;
 }
 
 body {
@@ -31,7 +32,7 @@ h1 {
 h2 {
     color: var(--color3);
     text-shadow: 1px 1px var(--color1);
-    padding: 1em 0 0 2em;;
+    padding: 1em 0 0 2em;
 }
 
 h3 {
@@ -95,6 +96,7 @@ input {
 
 button {
     font-size: 1em;
+    font-weight: bold;
     padding: 0.5em;
     color: var(--color0);
     background-color: var(--color2);
@@ -115,4 +117,31 @@ button {
     font-weight: bold;
 }
 
+h5 {
+    font-size: 1.5em;
+    color: var(--color3);
+    text-decoration: underline;
+    text-shadow: 1px 1px var(--color1);
+    padding: 1em 0 0 0.5em;
+}
+
+table {
+    border: 1px solid var(--color1);
+    width: 100%;
+}
+
+th {
+    background-color: var(--color2);
+    color: var(--color0);
+    text-align: center;
+    padding: 1em 0;
+    width: 33%;
+}
+
+td {
+    background-color: var(--color5);
+    text-align: center;
+    padding: 1em 0;
+    width: 33%;
+}
 
