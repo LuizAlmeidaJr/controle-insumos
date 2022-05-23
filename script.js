@@ -57,7 +57,7 @@ function calcularEstoque() {
 
     function calculaMassaCal(alturaVazio) {  // Utiliza uma relação de valores para determinar a massa de cal contida num silo
         // Usar a alturaVazio em (cm) para obter a massa de cal em (kg)
-        //var massaCal = (-2E-12) * Math.pow(alturaVazio, 6) + 4E-9 * Math.pow(alturaVazio, 5) - 3E-6 * Math.pow(alturaVazio, 4) + 8E-4 * Math.pow(alturaVazio, 3) + 8.12E-2 * Math.pow(alturaVazio, 2) - 90.562 * alturaVazio + 55228;
+        // var massaCal = (-2E-12) * Math.pow(alturaVazio, 6) + 4E-9 * Math.pow(alturaVazio, 5) - 3E-6 * Math.pow(alturaVazio, 4) + 8E-4 * Math.pow(alturaVazio, 3) + 8.12E-2 * Math.pow(alturaVazio, 2) - 90.562 * alturaVazio + 55228;
         var medidaSilo = [];
         for(i = 485; i < 800; i += 5) {
             medidaSilo.push(i);
@@ -65,12 +65,16 @@ function calcularEstoque() {
 
         var calSilo = [9918, 9327, 8928, 8540, 8163, 7797, 7443, 7099, 6767, 6444, 6132, 5831, 5539, 5257, 4985, 4722, 4469, 4225, 3990, 3763, 3546, 3337, 3136, 2944, 2759, 2582, 2413, 2252, 2097, 1950, 1810, 1677, 1550, 1430, 1316, 1208, 1106, 1010, 920, 835, 756, 681, 612, 547, 487, 431, 380, 332, 289, 249, 213, 181, 151, 125, 102, 81, 63, 48, 34, 23, 14, 6, 0];
 
-        if(alturaVazio <= 480) {
-            massaCal = 55203 - 92.418 * alturaVazio;  // Para a parte cilíndrica do silo, a relação é linear
-        } else {  // Para medidas acima de 480cm, entra na parte cônica (onde a relação deixa de ser linear e é necessário utilizar um relação de valores conhecidos)
-            for(i = 0; i < medidaSilo.length; i++) {
-                if(alturaVazio == medidaSilo[i]) {
-                    massaCal = calSilo[i];
+        if(alturaVazio == 0) {
+            massaCal = 0;
+        } else {
+            if(alturaVazio <= 480) {
+                massaCal = 55203 - 92.418 * alturaVazio;  // Para a parte cilíndrica do silo, a relação é linear
+            } else {  // Para medidas acima de 480cm, entra na parte cônica (onde a relação deixa de ser linear e é necessário utilizar um relação de valores conhecidos)
+                for(i = 0; i < medidaSilo.length; i++) {
+                    if(alturaVazio == medidaSilo[i]) {
+                        massaCal = calSilo[i];
+                    }
                 }
             }
         }
@@ -137,7 +141,30 @@ function calcularEstoque() {
 
     var today = new Date();
     var resultado = document.getElementById("estoqueCalculado");
-    resultado.innerHTML = `Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}:`;
+    resultado.innerHTML = `<h5>Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}</h5>`;
+    resultado.innerHTML += "<br><br>";
+    resultado.innerHTML += "<table><thead><tr><th>Insumo</th><th>Medidas</th><th>Estoque</th></tr></thead></table>"
+    resultado.innerHTML += `<table><tbody><tr><td>Cal Clarisina</td><td>${mCalSilo} cm, ${mCalBag} bags</td><td>${eCal.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Polímero Catiônico</td><td>${mPolCat} sacos</td><td>${ePolCat}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Polímero Aniônico</td><td>${mPolAni} sacos</td><td>${ePolAni}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Soda Cáustica 50%</td><td>${mSoda} cm</td><td>${eSoda.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Ácido Sulfúrico Concentrado</td><td>${mAcidoCon} cm</td><td>${eAcidoCon.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Ácido Sulfúrico Diluído</td><td>TQ01=${mAcidoDil1}%, TQ02=${mAcidoDil2}%, TQ03=${mAcidoDil3}%, TQ04=${mAcidoDil4}%, TQ05=${mAcidoDil5}%, TQ06=${mAcidoDil6}%</td><td>${eAcidoDil.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante</td><td>${mAETanque} cm, ${mAEContainer} L, ${mAEDorna} L</td><td>${eAE.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Dispersante</td><td>${mDPTanque} cm, ${mDPContainer} L</td><td>${eDP.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Nutriente</td><td>${mNutri} L</td><td>${eNutri.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Dióxido de Cloro 25%</td><td>${mDioxido} L</td><td>${eDioxido.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Monensina Emulsão</td><td>${mMonensina} L</td><td>${eMonensina.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Bactericida</td><td>${mBact} L</td><td>${eBact}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Neutralizante</td><td>${mNeutra} galões</td><td>${eNeutra}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Sódio 12,5%</td><td>${mHipoNa} L</td><td>${eHipoNa.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa} baldes</td><td>${eHipoCa}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} galões</td><td>${eZalta}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} galões</td><td>${eTallofin}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} bombonas</td><td>${eQuaternario}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)}kg</td></tr></tbody></table>`;
+
+    /*resultado.innerHTML = `Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}:`;
     resultado.innerHTML += "<br><br>";
     resultado.innerHTML += `Cal Clarisina: ${mCalSilo} cm, ${mCalBag} bags = ${eCal.toFixed(0)} kg`;
     resultado.innerHTML += "<br>";
@@ -177,7 +204,7 @@ function calcularEstoque() {
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Quatermol: ${mQuaternario} bombonas = ${eQuaternario}kg`;
     resultado.innerHTML += "<br>";
-    resultado.innerHTML += `Antiespumante para Água: ${mAEAgua} L = ${eAEAgua.toFixed(0)}kg`;
+    resultado.innerHTML += `Antiespumante para Água: ${mAEAgua} L = ${eAEAgua.toFixed(0)}kg`;*/
 }
 
 estoque.onclick = calcularEstoque;
