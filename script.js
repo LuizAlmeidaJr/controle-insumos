@@ -140,7 +140,7 @@ function calcularEstoque() {
     var eAEAgua = mAEAgua * bAEAgua;
 
     var today = new Date();
-    var resultado = document.getElementById("estoqueCalculado");
+    /*var resultado = document.getElementById("estoqueCalculado");
     resultado.innerHTML = `<h5>Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}</h5>`;
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Cal Clarisina: ${mCalSilo} cm, ${mCalBag} bags = ${eCal.toFixed(0)} kg`;
@@ -181,11 +181,12 @@ function calcularEstoque() {
     resultado.innerHTML += "<br>";
     resultado.innerHTML += `Quatermol: ${mQuaternario} bombonas = ${eQuaternario}kg`;
     resultado.innerHTML += "<br>";
-    resultado.innerHTML += `Antiespumante para Água: ${mAEAgua} L = ${eAEAgua.toFixed(0)}kg`;
+    resultado.innerHTML += `Antiespumante para Água: ${mAEAgua} L = ${eAEAgua.toFixed(0)}kg`;*/
 
-    /*var resultado = document.getElementById("estoqueCalculado");
+    var resultado = document.getElementById("estoqueCalculado");
+    resultado.style.display = "block";
     resultado.innerHTML = `<h5>Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}</h5>`;
-    resultado.innerHTML += "<br><br>";
+    resultado.innerHTML += "<br>";
     resultado.innerHTML += "<table><thead><tr><th>Insumo</th><th>Medidas</th><th>Estoque</th></tr></thead></table>"
     resultado.innerHTML += `<table><tbody><tr><td>Cal Clarisina</td><td>${mCalSilo} cm, ${mCalBag} bags</td><td>${eCal.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Polímero Catiônico</td><td>${mPolCat} sacos</td><td>${ePolCat}kg</td></tr></tbody></table>`;
@@ -205,7 +206,7 @@ function calcularEstoque() {
     resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} galões</td><td>${eZalta}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} galões</td><td>${eTallofin}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} bombonas</td><td>${eQuaternario}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)}kg</td></tr></tbody></table>`;*/
+    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)}kg</td></tr></tbody></table>`;
 }
 
 estoque.onclick = calcularEstoque;
