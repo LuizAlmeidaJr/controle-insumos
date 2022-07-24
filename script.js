@@ -20,10 +20,11 @@ function calcularEstoque() {
     var mDPTanque = document.getElementById("DPTanque").value;
     var mDPContainer = document.getElementById("DPContainer").value;
     var mNutri = document.getElementById("nutri").value;
+    var mUreia = document.getElementById("ureia").value;
     var mDioxido = document.getElementById("dioxido").value;
     var mAntib1 = document.getElementById("antib1").value;
     var mAntib2 = document.getElementById("antib2").value;
-    //var mAntib3 = document.getElementById("antib3").value;
+    var mAntib3 = document.getElementById("antib3").value;
     var mMonensina = document.getElementById("monensina").value;
     var mBact = document.getElementById("bact").value;
     var mNeutra = document.getElementById("neutra").value;
@@ -44,16 +45,17 @@ function calcularEstoque() {
     var bAE = 0.9;  // densidade do antiespumante
     var bDP = 1.0;  // densidade do dispersante
     var bNutri = 1.15;  // densidade do nutriente
-    var bDioxido = 1.3;  // verificar
-    var bZalta = 20;
+    var bUreia = 25;  // massa do saco
+    var bDioxido = 1.2;  // densidade do dióxido de cloro
+    var bZalta = 90;  // altura do galão de 200L
     var bMonensina = 1;  // densidade da monensina emulsão
     var bBact = 1;
     var bNeutra = 55;
-    var bHipoNa = 1.2;  // densidade do hipoclorito de sódio 12,5%
+    var bHipoNa = 1.25;  // densidade do hipoclorito de sódio 12,5%
     var bHipoCa = 14;
-    var bTallofin = 50;
+    var bTallofin = 50;  // altura do galão de 50L
     var bQuaternario = 200;
-    var bAEAgua = 0.9;
+    var bAEAgua = 1.0;
 
     function calculaMassaCal(alturaVazio) {  // Utiliza uma relação de valores para determinar a massa de cal contida num silo
         // Usar a alturaVazio em (cm) para obter a massa de cal em (kg)
@@ -128,14 +130,15 @@ function calcularEstoque() {
     var eAE = parseInt(calculaMassa(0.5, 2, mAETanque, bAE)) + (parseInt(mAEContainer) + parseInt(mAEDorna)) * bAE;
     var eDP = parseInt(calculaMassa(0.5, 2, mDPTanque, bDP)) + mDPContainer * bDP;
     var eNutri = mNutri * bNutri;
+    var eUreia = mUreia * bUreia;
     var eDioxido = mDioxido * bDioxido;
     var eMonensina = mMonensina * bMonensina;
     var eBact = mBact * bBact;
     var eNeutra = mNeutra * bNeutra;
     var eHipoNa = mHipoNa * bHipoNa;
     var eHipoCa = mHipoCa * bHipoCa;
-    var eZalta = mZalta * bZalta;
-    var eTallofin = mTallofin * bTallofin;
+    var eZalta = mZalta / bZalta * 200;
+    var eTallofin = mTallofin / bTallofin * 50;
     var eQuaternario = mQuaternario * bQuaternario;
     var eAEAgua = mAEAgua * bAEAgua;
 
@@ -186,7 +189,6 @@ function calcularEstoque() {
     var resultado = document.getElementById("estoqueCalculado");
     resultado.style.display = "block";
     resultado.innerHTML = `<h5>Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}</h5>`;
-    resultado.innerHTML += "<br>";
     resultado.innerHTML += "<table><thead><tr><th>Insumo</th><th>Medidas</th><th>Estoque</th></tr></thead></table>"
     resultado.innerHTML += `<table><tbody><tr><td>Cal Clarisina</td><td>${mCalSilo} cm, ${mCalBag} bags</td><td>${eCal.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Polímero Catiônico</td><td>${mPolCat} sacos</td><td>${ePolCat}kg</td></tr></tbody></table>`;
@@ -197,14 +199,18 @@ function calcularEstoque() {
     resultado.innerHTML += `<table><tbody><tr><td>Antiespumante</td><td>${mAETanque} cm, ${mAEContainer} L, ${mAEDorna} L</td><td>${eAE.toFixed(0)}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Dispersante</td><td>${mDPTanque} cm, ${mDPContainer} L</td><td>${eDP.toFixed(0)}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Nutriente</td><td>${mNutri} L</td><td>${eNutri.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Dióxido de Cloro 25%</td><td>${mDioxido} L</td><td>${eDioxido.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Ureia</td><td>${mUreia} sacos</td><td>${eUreia.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Dióxido de Cloro 25%</td><td>${mDioxido} kg</td><td>${eDioxido.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico LactoStab</td><td>${mAntib1} kg</td><td>${mAntib1}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico OX-Gram</td><td>${mAntib2} kg</td><td>${mAntib2}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico Protemosto LAM</td><td>${mAntib3} L</td><td>${mAntib3}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Monensina Emulsão</td><td>${mMonensina} L</td><td>${eMonensina.toFixed(0)}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Bactericida</td><td>${mBact} L</td><td>${eBact}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Neutralizante</td><td>${mNeutra} galões</td><td>${eNeutra}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Sódio 12,5%</td><td>${mHipoNa} L</td><td>${eHipoNa.toFixed(0)}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa} baldes</td><td>${eHipoCa}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} galões</td><td>${eZalta}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} galões</td><td>${eTallofin}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} cm</td><td>${eZalta.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} cm</td><td>${eTallofin.toFixed(0)}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} bombonas</td><td>${eQuaternario}kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)}kg</td></tr></tbody></table>`;
 }

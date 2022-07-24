@@ -14,6 +14,7 @@
     --color4: #21bee944;
     --color5: #dadada;
     --color6: #18468b;
+    --color7: #ffd67e;
 }
 
 body {
@@ -22,13 +23,34 @@ body {
 
 header {
     background-color: var(--color2);
-    height: 20vh;
 }
 
 h1 {
     color: var(--color0);
     text-align: center;
-    padding-top: 0.8em;
+    padding: 1em;
+    margin-bottom: 0;
+}
+
+nav {
+    height: 20px;
+}
+
+nav > a {
+    text-decoration: none;
+    color: var(--color0);
+    font-weight: bold;
+    font-variant: small-caps;
+    text-shadow: 1px 1px black;
+    margin-left: 2em;    
+    background-color: var(--color3);
+    padding: 0.2em;
+    border-radius: 5px 5px 0 0;
+    vertical-align: bottom;
+}
+
+nav > a:hover {
+    background-color: var(--color7);
 }
 
 h2 {
@@ -39,7 +61,9 @@ h2 {
 
 h3 {
     color: var(--color0);
-    background-color: var(--color3);
+    /*background-color: var(--color3);*/
+    background-image: linear-gradient(to right, var(--color3), var(--color7));
+
     padding: 0.5em;
     margin: 2em 1.7em 0 1.7em;
 }
@@ -105,6 +129,7 @@ button {
     color: var(--color0);
     background-color: var(--color2);
     border-radius: 5px;
+    border: none;
     display: block;
     margin: 0 auto 2em auto;
     cursor: pointer;
@@ -128,10 +153,11 @@ button:hover {
 }
 
 h5 {
-    font-size: 1.5em;
+    font-size: 1.1em;
     color: var(--color3);
     text-shadow: 1px 1px var(--color1);
     padding-top: 0.5em;
+    margin-bottom: 0.2em;
 }
 
 table {
@@ -148,11 +174,10 @@ th {
 }
 
 td {
-    font-size: 0.7em;
-    line-height: 1.5em;
+    font-size: 0.6em;
+    line-height: 1em;
     background-color: var(--color5);
     text-align: center;
     padding: 0;
     width: 33%;
 }
-

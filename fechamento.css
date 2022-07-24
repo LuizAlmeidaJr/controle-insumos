@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color0: white;
+    --color1: #535353;
+    --color2: #0D274D;
+    --color3: #F3A600;
+    --color4: #21bee944;
+    --color5: #dadada;
+    --color6: #18468b;
+    --color7: #ffd67e;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+header {
+    background-color: var(--color2);
+}
+
+h1 {
+    color: var(--color0);
+    text-align: center;
+    padding: 1em;
+    margin-bottom: 0;
+}
+
+nav {
+    height: 20px;
+}
+
+nav > a {
+    text-decoration: none;
+    color: var(--color0);
+    font-weight: bold;
+    font-variant: small-caps;
+    text-shadow: 1px 1px black;
+    margin-left: 2em;    
+    background-color: var(--color3);
+    padding: 0.2em;
+    border-radius: 5px 5px 0 0;
+    vertical-align: bottom;
+}
+
+nav > a:hover {
+    background-color: var(--color7);
+}
+
+h2 {
+    color: var(--color3);
+    text-shadow: 1px 1px var(--color1);
+    padding: 1em 0 0 2em;
+}
+
+table, tr, td, th {
+    border-collapse: collapse;
+    border: 1px solid var(--color0);
+}
+
+table {
+    margin: 1em auto;
+    
+    width: 90%;
+}
+
+th {
+    background-color: var(--color2);
+    color: var(--color0);
+    text-align: center;
+    padding: 0.5em;
+}
+
+td {
+    font-size: 0.7em;
+    line-height: 1.5em;
+    background-color: var(--color5);
+    text-align: center;
+    padding: 0.2em;
+    width: 12.5%;
+}
