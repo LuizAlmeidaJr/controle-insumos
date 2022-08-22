@@ -32,6 +32,7 @@ function calcularEstoque() {
     var mHipoCa = document.getElementById("hipoCa").value;
     var mZalta = document.getElementById("zalta").value;
     var mTallofin = document.getElementById("tallofin").value;
+    var mTallofinGl = document.getElementById("tallofinGl").value;
     var mQuaternario = document.getElementById("quaternario").value;
     var mAEAgua = document.getElementById("AEAgua").value;
     
@@ -138,7 +139,7 @@ function calcularEstoque() {
     var eHipoNa = mHipoNa * bHipoNa;
     var eHipoCa = mHipoCa * bHipoCa;
     var eZalta = mZalta / bZalta * 200;
-    var eTallofin = mTallofin / bTallofin * 50;
+    var eTallofin = mTallofin / bTallofin * 50 + mTallofinGl * bTallofin;
     var eQuaternario = mQuaternario * bQuaternario;
     var eAEAgua = mAEAgua * bAEAgua;
 
@@ -191,28 +192,28 @@ function calcularEstoque() {
     resultado.innerHTML = `<h5>Estoque ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}</h5>`;
     resultado.innerHTML += "<table><thead><tr><th>Insumo</th><th>Medidas</th><th>Estoque</th></tr></thead></table>"
     resultado.innerHTML += `<table><tbody><tr><td>Cal Clarisina</td><td>${mCalSilo} cm, ${mCalBag} bags</td><td>${eCal.toFixed(0)} kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Polímero Catiônico</td><td>${mPolCat} sacos</td><td>${ePolCat}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Polímero Aniônico</td><td>${mPolAni} sacos</td><td>${ePolAni}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Soda Cáustica 50%</td><td>${mSoda} cm</td><td>${eSoda.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Ácido Sulfúrico Concentrado</td><td>${mAcidoCon} cm</td><td>${eAcidoCon.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Ácido Sulfúrico Diluído</td><td>TQ01=${mAcidoDil1}%, TQ02=${mAcidoDil2}%, TQ03=${mAcidoDil3}%, TQ04=${mAcidoDil4}%, TQ05=${mAcidoDil5}%, TQ06=${mAcidoDil6}%</td><td>${eAcidoDil.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante</td><td>${mAETanque} cm, ${mAEContainer} L, ${mAEDorna} L</td><td>${eAE.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Dispersante</td><td>${mDPTanque} cm, ${mDPContainer} L</td><td>${eDP.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Nutriente</td><td>${mNutri} L</td><td>${eNutri.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Ureia</td><td>${mUreia} sacos</td><td>${eUreia.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Dióxido de Cloro 25%</td><td>${mDioxido} kg</td><td>${eDioxido.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico LactoStab</td><td>${mAntib1} kg</td><td>${mAntib1}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico OX-Gram</td><td>${mAntib2} kg</td><td>${mAntib2}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico Protemosto LAM</td><td>${mAntib3} L</td><td>${mAntib3}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Monensina Emulsão</td><td>${mMonensina} L</td><td>${eMonensina.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Bactericida</td><td>${mBact} L</td><td>${eBact}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Neutralizante</td><td>${mNeutra} galões</td><td>${eNeutra}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Sódio 12,5%</td><td>${mHipoNa} L</td><td>${eHipoNa.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa} baldes</td><td>${eHipoCa}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} cm</td><td>${eZalta.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} cm</td><td>${eTallofin.toFixed(0)}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} bombonas</td><td>${eQuaternario}kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)}kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Polímero Catiônico</td><td>${mPolCat} sacos</td><td>${ePolCat} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Polímero Aniônico</td><td>${mPolAni} sacos</td><td>${ePolAni} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Soda Cáustica 50%</td><td>${mSoda} cm</td><td>${eSoda.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Ácido Sulfúrico Concentrado</td><td>${mAcidoCon} cm</td><td>${eAcidoCon.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Ácido Sulfúrico Diluído</td><td>TQ01=${mAcidoDil1}%, TQ02=${mAcidoDil2}%, TQ03=${mAcidoDil3}%, TQ04=${mAcidoDil4}%, TQ05=${mAcidoDil5}%, TQ06=${mAcidoDil6}%</td><td>${eAcidoDil.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante</td><td>${mAETanque} cm, ${mAEContainer} L, ${mAEDorna} L</td><td>${eAE.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Dispersante</td><td>${mDPTanque} cm, ${mDPContainer} L</td><td>${eDP.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Nutriente</td><td>${mNutri} L</td><td>${eNutri.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Ureia</td><td>${mUreia} sacos</td><td>${eUreia.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Dióxido de Cloro 25%</td><td>${mDioxido} kg</td><td>${eDioxido.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico Protemosto HOP</td><td>${mAntib1} kg</td><td>${mAntib1} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico OX-Gram</td><td>${mAntib2} kg</td><td>${mAntib2} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antibiótico Protemosto LAM</td><td>${mAntib3} kg</td><td>${mAntib3} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Monensina Emulsão</td><td>${mMonensina} L</td><td>${eMonensina.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Bactericida</td><td>${mBact} L</td><td>${eBact} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Neutralizante</td><td>${mNeutra} galões</td><td>${eNeutra} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Sódio 12,5%</td><td>${mHipoNa} L</td><td>${eHipoNa.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa} baldes</td><td>${eHipoCa} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} cm</td><td>${eZalta.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} cm, ${mTallofinGl} galões fechados</td><td>${eTallofin.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} L</td><td>${mQuaternario} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)} kg</td></tr></tbody></table>`;
 }
 
 estoque.onclick = calcularEstoque;
