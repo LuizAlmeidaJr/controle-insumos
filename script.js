@@ -29,7 +29,8 @@ function calcularEstoque() {
     var mBact = document.getElementById("bact").value;
     var mNeutra = document.getElementById("neutra").value;
     var mHipoNa = document.getElementById("hipoNa").value;
-    var mHipoCa = document.getElementById("hipoCa").value;
+    var mHipoCa14 = document.getElementById("hipoCa14").value;
+    var mHipoCa45 = document.getElementById("hipoCa45").value;
     var mZalta = document.getElementById("zalta").value;
     var mTallofin = document.getElementById("tallofin").value;
     var mTallofinGl = document.getElementById("tallofinGl").value;
@@ -53,7 +54,8 @@ function calcularEstoque() {
     var bBact = 1;
     var bNeutra = 55;
     var bHipoNa = 1.25;  // densidade do hipoclorito de sódio 12,5%
-    var bHipoCa = 14;
+    var bHipoCa14 = 14;
+    var bHipoCa45 = 45;
     var bTallofin = 50;  // altura do galão de 50L
     var bQuaternario = 200;
     var bAEAgua = 1.0;
@@ -137,7 +139,7 @@ function calcularEstoque() {
     var eBact = mBact * bBact;
     var eNeutra = mNeutra * bNeutra;
     var eHipoNa = mHipoNa * bHipoNa;
-    var eHipoCa = mHipoCa * bHipoCa;
+    var eHipoCa = mHipoCa14 * bHipoCa14 + mHipoCa45 * bHipoCa45;
     var eZalta = mZalta / bZalta * 200;
     var eTallofin = mTallofin / bTallofin * 50 + mTallofinGl * bTallofin;
     var eQuaternario = mQuaternario * bQuaternario;
@@ -209,7 +211,7 @@ function calcularEstoque() {
     resultado.innerHTML += `<table><tbody><tr><td>Bactericida</td><td>${mBact} L</td><td>${eBact} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Neutralizante</td><td>${mNeutra} galões</td><td>${eNeutra} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Sódio 12,5%</td><td>${mHipoNa} L</td><td>${eHipoNa.toFixed(0)} kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa} baldes</td><td>${eHipoCa} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa14} baldes 14kg, ${mHipoCa45} baldes 45kg</td><td>${eHipoCa} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} cm</td><td>${eZalta.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} cm, ${mTallofinGl} galões fechados</td><td>${eTallofin.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} L</td><td>${mQuaternario} kg</td></tr></tbody></table>`;
