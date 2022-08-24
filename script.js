@@ -57,7 +57,7 @@ function calcularEstoque() {
     var bHipoCa14 = 14;
     var bHipoCa45 = 45;
     var bTallofin = 50;  // altura do galão de 50L
-    var bQuaternario = 200;
+    var bQuaternario = 90; // altura do galão de 200L
     var bAEAgua = 1.0;
 
     function calculaMassaCal(alturaVazio) {  // Utiliza uma relação de valores para determinar a massa de cal contida num silo
@@ -142,7 +142,7 @@ function calcularEstoque() {
     var eHipoCa = mHipoCa14 * bHipoCa14 + mHipoCa45 * bHipoCa45;
     var eZalta = mZalta / bZalta * 200;
     var eTallofin = mTallofin / bTallofin * 50 + mTallofinGl * bTallofin;
-    var eQuaternario = mQuaternario * bQuaternario;
+    var eQuaternario = mQuaternario / bQuaternario * 200;
     var eAEAgua = mAEAgua * bAEAgua;
 
     var today = new Date();
@@ -214,7 +214,7 @@ function calcularEstoque() {
     resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa14} baldes 14kg, ${mHipoCa45} baldes 45kg</td><td>${eHipoCa} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Zalta</td><td>${mZalta} cm</td><td>${eZalta.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} cm, ${mTallofinGl} galões fechados</td><td>${eTallofin.toFixed(0)} kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} L</td><td>${mQuaternario} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Quatermol</td><td>${mQuaternario} cm</td><td>${eQuaternario.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)} kg</td></tr></tbody></table>`;
 }
 
