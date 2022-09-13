@@ -52,7 +52,7 @@ function calcularEstoque() {
     var bZalta = 90;  // altura do galão de 200L
     var bMonensina = 1;  // densidade da monensina emulsão
     var bBact = 1;
-    var bNeutra = 55;
+    var bNeutra = 50;
     var bHipoNa = 1.25;  // densidade do hipoclorito de sódio 12,5%
     var bHipoCa14 = 14;
     var bHipoCa45 = 45;
