@@ -33,7 +33,7 @@ function calcularEstoque() {
     /*var mHipoCa45 = document.getElementById("hipoCa45").value;*/
     var mZalta = document.getElementById("zalta").value;
     var mTallofin = document.getElementById("tallofin").value;
-    /*var mTallofinGl = document.getElementById("tallofinGl").value;*/
+    var mTallofinGl = document.getElementById("tallofinGl").value;
     var mQuaternario = document.getElementById("quaternario").value;
     var mAEAgua = document.getElementById("AEAgua").value;
     
@@ -57,7 +57,7 @@ function calcularEstoque() {
     var bHipoCa14 = 14;
     var bHipoCa45 = 45;
     var bTallofin = 50;  // altura do galão de 50L
-    var bQuaternario = 1; // 90cm =altura do galão de 200L
+    var bQuaternario = 1; // 90cm = altura do galão de 200L
     var bAEAgua = 1.0;
 
     function calculaMassaCal(alturaVazio) {  // Utiliza uma relação de valores para determinar a massa de cal contida num silo
@@ -141,7 +141,7 @@ function calcularEstoque() {
     var eHipoNa = mHipoNa * bHipoNa;
     var eHipoCa = mHipoCa14 * bHipoCa14; /* var eHipoCa = mHipoCa14 * bHipoCa14 + mHipoCa45 * bHipoCa45; */
     var eZalta = mZalta * bZalta;
-    var eTallofin = mTallofin / bTallofin * 50; /* var eTallofin = mTallofin / bTallofin * 50 + mTallofinGl * bTallofin; */
+    var eTallofin = mTallofin / bTallofin * 50 + mTallofinGl * bTallofin;
     var eQuaternario = mQuaternario * bQuaternario;
     var eAEAgua = mAEAgua * bAEAgua;
 
@@ -213,7 +213,7 @@ function calcularEstoque() {
     resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Sódio 12,5%</td><td>${mHipoNa} L</td><td>${eHipoNa.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Hipoclorito de Cálcio</td><td>${mHipoCa14} baldes 14kg</td><td>${eHipoCa} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Dispersante Inorgânico</td><td>${mZalta} L</td><td>${eZalta.toFixed(0)} kg</td></tr></tbody></table>`;
-    resultado.innerHTML += `<table><tbody><tr><td>Tallofin</td><td>${mTallofin} cm</td><td>${eTallofin.toFixed(0)} kg</td></tr></tbody></table>`;
+    resultado.innerHTML += `<table><tbody><tr><td>Performax</td><td>${mTallofin} cm, ${mTallofinGl} galões</td><td>${eTallofin.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Quaternário</td><td>${mQuaternario} L</td><td>${eQuaternario.toFixed(0)} kg</td></tr></tbody></table>`;
     resultado.innerHTML += `<table><tbody><tr><td>Antiespumante para Água</td><td>${mAEAgua} L</td><td>${eAEAgua.toFixed(0)} kg</td></tr></tbody></table>`;
 }
